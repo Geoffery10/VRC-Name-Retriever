@@ -6,16 +6,21 @@ from colorama import Fore, init
 # OnPlayerJoined / OnPlayerLeft
 
 def find_logs():
-    # return any .txt files in the current directory (name must include log)
+    # return the most recently modified .txt file in the current directory (name must include log)
+    logs = []
     for file in os.listdir(os.getcwd()):
         if file.endswith(".txt") and "log" in file:
-            return file
+            logs.append(file)
     home_dir = os.path.expanduser("~")
     local_low_folder = os.path.join(home_dir, "AppData", "LocalLow")
     path = os.path.join(local_low_folder, "VRChat", "vrchat")
     for file in os.listdir(path):
         if file.endswith(".txt") and "log" in file:
-            return path + "\\" + file
+            logs.append(os.path.join(path, file))
+    if logs:
+        return max(logs, key=os.path.getmtime)
+    else:
+        return None
         
 def get_usernames(players, line):
     temp_player = re.findall(r'(?<=OnPlayerJoined ).*', line)
