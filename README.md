@@ -2,9 +2,9 @@
 
 Get's VRChat Usernames from Last Session's Logs.
 
-![1736616278043](image/README/1736616278043.png)
+[![Preview](https://i.postimg.cc/508G9Dtj/image.png)](https://postimg.cc/G8hzq7G1)
 
-## Usage
+Usage
 
 - There are two scripts: `get_usernames.nu` and `get_usernames.py` (The Nushell version is the recommended version.)
 - To use this code you need to have Nushell or Python ^3.6.
