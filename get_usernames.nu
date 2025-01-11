@@ -1,4 +1,7 @@
+# Put your VRChat install folder here:
 const LOG_DIR = '\\GEOFFERYS-CYBER\Users\powel\AppData\LocalLow\VRChat\vrchat'
+# Put the folder you'd like to save the results to
+const CSV_OUTPUT_DIR = 'N:\users\geoffery\photos\VRChat'
 
 def process_log [file] {
     cd $LOG_DIR
@@ -23,9 +26,9 @@ def process_log [file] {
     let names = find_names $table
 
     # Save player joins to a text file
-    $names | polars save N:\users\geoffery\photos\VRChat\playerNameLogs.csv
-    $playerJoins | to csv | save -f N:\users\geoffery\photos\VRChat\playerLogs.csv
-    $playerLeft | to csv | save --append N:\users\geoffery\photos\VRChat\playerLogs.csv
+    $names | polars save ($CSV_OUTPUT_DIR + '\playerNameLogs.csv')
+    $playerJoins | to csv | save -f ($CSV_OUTPUT_DIR + '\playerLogs.csv')
+    $playerLeft | to csv | save --append ($CSV_OUTPUT_DIR + '\playerLogs.csv')
 }
 
 def find_names [table] {
